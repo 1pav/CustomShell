@@ -1,0 +1,28 @@
+  _____          _                   _____ _          _ _
+ / ____|        | |                 / ____| |        | | |
+| |    _   _ ___| |_ ___  _ __ ___ | (___ | |__   ___| | |
+| |   | | | / __| __/ _ \| '_ ` _ \ \___ \| '_ \ / _ \ | |
+| |___| |_| \__ \ || (_) | | | | | |____) | | | |  __/ | |
+ \_____\__,_|___/\__\___/|_| |_| |_|_____/|_| |_|\___|_|_|
+
+[ Description ]
+
+This program includes a main executable, pmanager, that is a custom shell for
+executing external commands. Each command is compiled to a separate binary,
+making possible to extend the custom shell's functionality with relative ease.
+IPC communication is accomplished using a single shared FIFO, whose
+functionality is implemented in the library provided by "message.h".
+Test mode uses "test.sh" to populate a file with random commands. Please check
+the Makefile for editing arguments passed to this script.
+To build the project using -g option, you can pass DEBUG=1 to make.
+
+[ Make rules ]
+
+help    shows this help text (default)
+clean   deletes the "build" and "assets" directories
+build   runs "clean" and builds the project, placing binaries under the
+        "build" directory
+run     runs "build" and executes pmanager
+assets  runs "build" and creates test file (using "test.sh") under "assets"
+        directory
+test    runs "assets" and executes pmanager in test mode
